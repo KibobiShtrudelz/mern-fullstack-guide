@@ -6,7 +6,7 @@ const Users = () => {
   const USERS = [
     {
       id: "u1",
-      name: "Pe Ci",
+      name: "Lord Slatina",
       image: "https://placeimg.com/400/300/any",
       places: 3
     }
