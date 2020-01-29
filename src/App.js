@@ -13,12 +13,8 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Users />
-        </Route>
-        <Route exact path="/places/new">
-          <NewPlace />
-        </Route>
+        <Route exact path="/" component={Users} />
+        <Route exact path="/places/new" component={NewPlace} />
         <Redirect to="/" />
       </Switch>
     </Router>
