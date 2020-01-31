@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Map from "../../shared/components/UIElements/Map";
 import Card from "../../shared/components/UIElements/Card";
 import Modal from "../../shared/components/UIElements/Modal";
 import Button from "../../shared/components/FormElements/Button";
@@ -23,12 +24,13 @@ const PlaceItem = ({ id, image, title, address, description }) => {
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
-          <img
+          {/* <img
             width="100%"
             height="100%"
             src="https://www.mapsofworld.com/images-mow/world-map.jpg"
             alt="hello world"
-          />
+          /> */}
+          <Map />
         </div>
       </Modal>
       <li className="place-item">

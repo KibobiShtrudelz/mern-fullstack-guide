@@ -24,8 +24,8 @@ const DUMMY_PLACES = [
     imageUrl: "https://img.memecdn.com/dafuq_o_1443929.jpg",
     address: "По света и у вас",
     location: {
-      lat: 74.444,
-      lng: -47.777
+      lat: 42.6731498,
+      lng: 23.3634358
     },
     creator: "u2"
   }
