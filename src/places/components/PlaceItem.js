@@ -23,7 +23,12 @@ const PlaceItem = ({ id, image, title, address, description }) => {
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
-          <h2>THE MAP!</h2>
+          <img
+            width="100%"
+            height="100%"
+            src="https://www.mapsofworld.com/images-mow/world-map.jpg"
+            alt="hello world"
+          />
         </div>
       </Modal>
       <li className="place-item">

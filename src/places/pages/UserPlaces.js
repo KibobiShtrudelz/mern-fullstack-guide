@@ -22,7 +22,7 @@ const DUMMY_PLACES = [
     title: "Dafuq is this SECOND title?!?",
     description: "Dafuq is that SECOND description?!?",
     imageUrl: "https://img.memecdn.com/dafuq_o_1443929.jpg",
-    address: "u vas",
+    address: "По света и у вас",
     location: {
       lat: 74.444,
       lng: -47.777
