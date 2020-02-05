@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import "./Avatar.css";
+import './Avatar.css';
 
-const Avatar = ({ alt, width, style, className }) => {
+const Avatar = props => {
   return (
-    <div className={`avatar ${className}`} style={style}>
+    <div className={`avatar ${props.className}`} style={props.style}>
       <img
-        src={`https://placeimg.com/${width}/${width}/any`}
-        alt={alt}
-        style={{ width: width, height: width }}
+        src={props.image}
+        alt={props.alt}
+        style={{ width: props.width, height: props.width }}
       />
     </div>
   );

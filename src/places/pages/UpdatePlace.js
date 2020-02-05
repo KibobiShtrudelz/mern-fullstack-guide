@@ -3,39 +3,65 @@ import { useParams } from "react-router-dom";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/FormElements/Button";
-import {} from "../../shared/util/validators";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH
+} from "../../shared/util/validators";
+import { useForm } from "../../shared/hooks/form-hook";
+import "./PlaceForm.css";
 
 const DUMMY_PLACES = [
   {
     id: "p1",
-    title: "Dafuq is this title?!?",
-    description: "Dafuq is that description?!?",
+    title: "Empire State Building",
+    description: "One of the most famous sky scrapers in the world!",
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb4yPO1JjdL1b5erO5wHKIDf8oTufeUdUohLtHaJ19lDtFoyAqvA&s",
-    address: "u nas",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
+    address: "20 W 34th St, New York, NY 10001",
     location: {
-      lat: 44.444,
-      lng: 77.777
+      lat: 40.7484405,
+      lng: -73.9878584
     },
     creator: "u1"
   },
   {
     id: "p2",
-    title: "Dafuq is this SECOND title?!?",
-    description: "Dafuq is that SECOND description?!?",
-    imageUrl: "https://img.memecdn.com/dafuq_o_1443929.jpg",
-    address: "По света и у вас",
+    title: "Empire State Building",
+    description: "One of the most famous sky scrapers in the world!",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
+    address: "20 W 34th St, New York, NY 10001",
     location: {
-      lat: 42.6731498,
-      lng: 23.3634358
+      lat: 40.7484405,
+      lng: -73.9878584
     },
     creator: "u2"
   }
 ];
 
-const UpdatePlace = props => {
+const UpdatePlace = () => {
   const placeId = useParams().placeId;
+
   const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
+
+  const [formState, inputHandler] = useForm(
+    {
+      title: {
+        value: identifiedPlace.title,
+        isValid: true
+      },
+      description: {
+        value: identifiedPlace.description,
+        isValid: true
+      }
+    },
+    true
+  );
+
+  const placeUpdateSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
 
   if (!identifiedPlace) {
     return (
@@ -46,32 +72,31 @@ const UpdatePlace = props => {
   }
 
   return (
-    <form>
+    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
       <Input
-        valid
         id="title"
+        element="input"
         type="text"
         label="Title"
-        element="input"
-        validators={[]}
-        onInput={() => {}}
-        value={identifiedPlace.title}
+        validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
+        onInput={inputHandler}
+        initialValue={formState.inputs.title.value}
+        initialValid={formState.inputs.title.isValid}
       />
-
       <Input
-        valid
-        type="text"
-        validators={[]}
         id="description"
         element="textarea"
-        onInput={() => {}}
         label="Description"
-        value={identifiedPlace.description}
+        validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description (min. 5 characters)."
+        onInput={inputHandler}
+        initialValue={formState.inputs.description.value}
+        initialValid={formState.inputs.description.isValid}
       />
-
-      <Button type="submit" disabled>UPDATE PLACE</Button>
+      <Button type="submit" disabled={!formState.isValid}>
+        UPDATE PLACE
+      </Button>
     </form>
   );
 };
