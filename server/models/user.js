@@ -22,10 +22,13 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  places: {
-    type: String,
-    required: true
-  }
+  places: [
+    {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "Place"
+    }
+  ]
 });
 
 // this 3rd party package makes the validation that the email is unique.
