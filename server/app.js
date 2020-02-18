@@ -1,6 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/api/places", placesRoutes); // => /api/places...
+app.use("/api/places", placesRoutes);
 app.use("/api/users", usersRoutes);
 
 app.use((req, res, next) => {
@@ -28,14 +28,11 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://XxXtraCookie:Snuki1990!@mern-fullstack-hcyj6.mongodb.net/places?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
+    "mongodb+srv://XxXtraCookie:Snuki1990!@mern-fullstack-hcyj6.mongodb.net/places?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(5000);
-    console.log("Connected to database!");
   })
-  .catch(error => console.log(error));
+  .catch(err => {
+    console.log(err);
+  });
