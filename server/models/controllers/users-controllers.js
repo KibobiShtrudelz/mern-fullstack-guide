@@ -63,7 +63,7 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  res.status(201).json({ user: createdUser.toObject({ getters: true }) }); // createdUser includes the PW
+  res.status(201).json({ user: createdUser.toObject({ getters: true }) });
 };
 
 const login = async (req, res, next) => {

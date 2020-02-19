@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import Card from "../../shared/components/UIElements/Card";
-import Button from "../../shared/components/FormElements/Button";
-import Modal from "../../shared/components/UIElements/Modal";
-import Map from "../../shared/components/UIElements/Map";
-import { AuthContext } from "../../shared/context/auth-context";
-import "./PlaceItem.css";
+import Card from '../../shared/components/UIElements/Card';
+import Button from '../../shared/components/FormElements/Button';
+import Modal from '../../shared/components/UIElements/Modal';
+import Map from '../../shared/components/UIElements/Map';
+import { AuthContext } from '../../shared/context/auth-context';
+import './PlaceItem.css';
 
 const PlaceItem = props => {
   const auth = useContext(AuthContext);
@@ -26,7 +26,7 @@ const PlaceItem = props => {
 
   const confirmDeleteHandler = () => {
     setShowConfirmModal(false);
-    console.log("DELETING...");
+    console.log('DELETING...');
   };
 
   return (
@@ -79,12 +79,13 @@ const PlaceItem = props => {
               VIEW ON MAP
             </Button>
             {auth.isLoggedIn && (
-              <>
-                <Button to={`/places/${props.id}`}>EDIT</Button>
-                <Button danger onClick={showDeleteWarningHandler}>
-                  DELETE
-                </Button>
-              </>
+              <Button to={`/places/${props.id}`}>EDIT</Button>
+            )}
+
+            {auth.isLoggedIn && (
+              <Button danger onClick={showDeleteWarningHandler}>
+                DELETE
+              </Button>
             )}
           </div>
         </Card>
